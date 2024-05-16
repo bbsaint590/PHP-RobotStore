@@ -4,12 +4,11 @@ require_once './src/Entities/Models/StoreModel.php';
 require_once './src/Factories/PdoFactory.php';
 
 $db = PdoFactory::connect();
-$productId = StoreModel::getProductsById($id = $_GET['id'], $db);
 
-
-?>
-
-<!DOCTYPE html>
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $productId = StoreModel::getProductsById($_GET['id'], $db);
+    echo '
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,11 +18,15 @@ $productId = StoreModel::getProductsById($id = $_GET['id'], $db);
     <link href="src/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="containerbyid">
-    <?php
-        echo  $productId->displayById();
-    ?>
+<div class="containerbyid">';
+
+        echo  $productId->displayById();'
 </div>
 
 </body>
-</html>
+</html>';
+} else {
+    echo '<h1>Invalid ID</h1>';
+}
+?>
+

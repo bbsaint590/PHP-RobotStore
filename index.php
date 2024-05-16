@@ -6,17 +6,6 @@ require_once './src/Factories/PdoFactory.php';
 $db = PdoFactory::connect();
 $products = StoreModel::getProducts($db);
 
-//echo '<ul>';
-//foreach ($products as $product) {
-//    echo $product->display();
-//}
-//echo '</ul>';
-//echo '<ul>';
-//foreach ($aprons as $apron) {
-//    echo $apron->display();
-//}
-//echo '</ul>';
-
 ?>
 
 <!DOCTYPE html>
