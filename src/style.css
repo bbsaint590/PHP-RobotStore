@@ -1,21 +1,16 @@
 * {
     box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Times, serif;
 }
 
 .maincontainer {
     display: flex;
-    flex-direction: row;
+
 }
 
 .filter {
     flex: 25%;
     padding: 20px;
-    align-items: end;
 }
 
 .container {
@@ -44,6 +39,7 @@ body {
 
 .filter form {
     margin-bottom: 20px;
+    padding: 10px;
 }
 
 .filter h3 {
@@ -98,9 +94,9 @@ body {
         padding: 0 10px;
     }
 
-    .productbox {
-        width: calc(50% - 10px);
-    }
+    /*.productbox {*/
+    /*    width: calc(50% - 10px);*/
+    /*}*/
 
 
     .containerbyid {

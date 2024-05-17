@@ -6,25 +6,36 @@ require_once './src/Factories/PdoFactory.php';
 $db = PdoFactory::connect();
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $productId = StoreModel::getProductsById($_GET['id'], $db);
-    echo '
-    <!DOCTYPE html>
+    $productId = StoreModel::getProductById($_GET['id'], $db);
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Products</title>
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="src/normalize.css">
     <link href="src/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="containerbyid">';
+<div class="containerbyid">
 
-        echo  $productId->displayById();'
+    <?php
+    if ($productId !== false) {
+        echo $productId->displayById();
+    } else {
+        echo '<h1>Product does not exist</h1>';
+    }
+
+    ?>
+
 </div>
-
 </body>
-</html>';
+</html>
+
+<?php
+
 } else {
     echo '<h1>Invalid ID</h1>';
 }
